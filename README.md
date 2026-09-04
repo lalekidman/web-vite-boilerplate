@@ -1,4 +1,4 @@
-# pos-portal
+# web-vite-boilerplate
 
 Vite + React 19 + TypeScript + Tailwind v4 starter, with an SDD/TDD agent
 workflow (`.claude/`) and a graphify knowledge graph.
@@ -6,10 +6,10 @@ workflow (`.claude/`) and a graphify knowledge graph.
 ## Use it
 
 ```bash
-gh repo create my-app --template <you>/pos-portal
+gh repo create my-app --template <you>/web-vite-boilerplate
 cd my-app
 npm install
-npm run setup my-app   # renames pos-portal -> my-app across the repo
+npm run setup my-app   # renames web-vite-boilerplate -> my-app across the repo
 ```
 
 `npm run setup` with no argument uses the current directory name.

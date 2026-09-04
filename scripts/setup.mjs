@@ -4,7 +4,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { basename } from 'node:path'
 
-const OLD = 'web-boilerplate'
+const OLD = 'web-vite-boilerplate'
 const raw = process.argv[2] || basename(process.cwd())
 const name = raw
   .toLowerCase()
