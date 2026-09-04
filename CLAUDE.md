@@ -1,4 +1,4 @@
-# <project>
+# web-boilerplate
 
 Vite + React 19 + TypeScript + Tailwind v4 client. Package manager: npm.
 

@@ -1,32 +1,42 @@
-# React + TypeScript + Vite
+# web-boilerplate
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Vite + React 19 + TypeScript + Tailwind v4 starter, with an SDD/TDD agent
+workflow (`.claude/`) and a graphify knowledge graph.
 
-Currently, two official plugins are available:
+## Use it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+gh repo create my-app --template <you>/web-boilerplate
+cd my-app
+npm install
+npm run setup my-app   # renames web-boilerplate -> my-app across the repo
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+`npm run setup` with no argument uses the current directory name.
+
+## Commands
+
+| Command | What |
+|---|---|
+| `npm run dev` | dev server |
+| `npm run build` | typecheck + production build to `dist/` |
+| `npm run typecheck` | `tsc -b` |
+| `npm run lint` | oxlint |
+| `npm test` | vitest |
+| `npm run setup <name>` | rename the boilerplate |
+
+## Layout
+
+- `src/routes/` → `src/components/` → `src/lib/` → `src/lib/api/` (the only
+  place `fetch` happens). `@/` maps to `src/`.
+- `docs/` — CONTEXT, ADRs, PRDs, architecture, api-contracts. Source of truth
+  for *what & why*.
+- `.claude/` — the `/grill-with-docs → /adr → /to-tasks → /tdd → /implement →
+  /refactor → /handoff` command loop and the `scout` recon skill.
+- `graphify-out/GRAPH_REPORT.md` — structural map; rebuilt by a git post-commit
+  hook (`graphify hook install`).
+
+## Deploy
+
+Cloudflare Pages: build `npm run build`, output `dist`. `wrangler.json` carries
+the project name and build output dir.
